@@ -28,7 +28,9 @@ from .delete_channel import DeleteChannel
 from .delete_chat_photo import DeleteChatPhoto
 from .delete_folder import DeleteFolder
 from .delete_forum_topic import DeleteForumTopic
-from .delete_supergroup import DeleteSupergroup
+from .delete_supergroup import DeleteSupergroup 
+from .reopen_forum_topic import ReopenForumTopic 
+from .reopen_general_topic import ReopenGeneralTopic
 from .delete_user_history import DeleteUserHistory
 from .edit_forum_topic import EditForumTopic
 from .export_folder_link import ExportFolderLink
@@ -87,6 +89,7 @@ class Chats(
     BanChatMember,
     UnbanChatMember,
     RestrictChatMember,
+    ReopenGeneralTopic,
     PromoteChatMember,
     GetChatMembers,
     GetChatMember,
@@ -98,7 +101,8 @@ class Chats(
     SetChatDescription,
     PinChatMessage,
     UnpinChatMessage,
-    PinForumTopic,
+    PinForumTopic, 
+    ReopenForumTopic,
     UnpinForumTopic,
     UpdateChatNotifications,
     UpdateColor,
