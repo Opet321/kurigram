@@ -77,7 +77,7 @@ class ChatMemberUpdated(Object, Update):
     @staticmethod
     def _parse(
         client: "pyrogram.Client",
-        update: Union["raw.types.UpdateChatParticipant", "raw.types.UpdateChannelParticipant"],
+        update: Union["raw.types.UpdateChatParticipant", "raw.types.UpdateChannelParticipant"], "raw.types.UpdateBotStopped"],
         users: Dict[int, "raw.types.User"],
         chats: Dict[int, "raw.types.Chat"]
     ) -> "ChatMemberUpdated":
