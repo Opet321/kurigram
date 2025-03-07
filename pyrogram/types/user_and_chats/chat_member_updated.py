@@ -81,6 +81,35 @@ class ChatMemberUpdated(Object, Update):
         users: Dict[int, "raw.types.User"],
         chats: Dict[int, "raw.types.Chat"]
     ) -> "ChatMemberUpdated":
+        if isinstance(update, raw.types.UpdateBotStopped):
+            from_user = types.User._parse(client, users[update.user_id])
+            _chat_member_one = types.ChatMember(
+                user=from_user,
+                status=enums.ChatMemberStatus.BANNED,
+                client=client
+            )
+            _chat_member_two = types.ChatMember(
+                user=from_user,
+                status=enums.ChatMemberStatus.MEMBER,
+                client=client
+            )
+            if update.stopped:
+                return ChatMemberUpdated(
+                    chat=types.Chat._parse_chat(client, users[update.user_id]),
+                    from_user=from_user,
+                    date=utils.timestamp_to_datetime(update.date),
+                    old_chat_member=_chat_member_two,
+                    new_chat_member=_chat_member_one,
+                    client=client
+                )
+            return ChatMemberUpdated(
+                chat=types.Chat._parse_chat(client, users[update.user_id]),
+                from_user=from_user,
+                date=utils.timestamp_to_datetime(update.date),
+                old_chat_member=_chat_member_one,
+                new_chat_member=_chat_member_two,
+                client=client
+            )
         chat_id = getattr(update, "chat_id", None) or getattr(update, "channel_id")
 
         old_chat_member = None
