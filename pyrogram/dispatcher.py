@@ -39,7 +39,8 @@ from pyrogram.raw.types import (
     UpdateBotInlineSend, UpdateChatParticipant, UpdateChannelParticipant,
     UpdateBotChatInviteRequester, UpdateStory, UpdateBotShippingQuery, UpdateBotMessageReaction,
     UpdateBotMessageReactions, UpdateBotChatBoost, UpdateBusinessBotCallbackQuery,
-    UpdateBotPurchasedPaidMedia, UpdateMessagePollVote
+    UpdateBotPurchasedPaidMedia, 
+    UpdateBotStopped, UpdateMessagePollVote
 )
 
 log = logging.getLogger(__name__)
